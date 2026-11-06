@@ -1,0 +1,29 @@
+-Goal-
+Extract typed entities and direct relationships from the text.
+
+-Output format-
+Use only these exact record formats:
+("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<short_description>)
+("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<short_reason>{tuple_delimiter}<strength_1_to_10>)
+
+Separate every record with the literal record delimiter {record_delimiter}.
+Finish with {completion_delimiter}.
+
+Example:
+("entity"{tuple_delimiter}ITEM 1{tuple_delimiter}item{tuple_delimiter}example item){record_delimiter}
+("entity"{tuple_delimiter}ITEM 2{tuple_delimiter}item{tuple_delimiter}example item){record_delimiter}
+("relationship"{tuple_delimiter}ITEM 1{tuple_delimiter}ITEM 2{tuple_delimiter}direct relation{tuple_delimiter}10){completion_delimiter}
+
+-Rules-
+Entity types must be one of: {entity_types}.
+Use English. Entity names should be uppercase.
+Only include facts explicitly supported by the text.
+Keep descriptions short.
+If the text contains an identifier matching ITEM followed by a number, preserve that exact identifier as an entity name, for example ITEM 13010.
+For lines starting with "Graph entity:" or "Graph relationship:", extract the named ITEM-number entities and direct relationships exactly.
+If a "Graph relationship:" line names source and target entities, output a relationship record for that exact pair.
+
+-Text-
+{input_text}
+
+-Output-

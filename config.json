@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "method": "TopoPoison",
+  "k": 10,
+  "default_model": "microsoft/phi-4",
+  "datasets": {
+    "Amazon": {
+      "target_id": "item-13622",
+      "entity_type": "item",
+      "entity_label": "Item",
+      "domain": "Amazon",
+      "sampling_seed": 0,
+      "changed_document_budget": 77,
+      "modified_document_count": 17,
+      "clean_corpus": "artifacts/Amazon/clean_corpus.jsonl",
+      "candidate_corpus": "artifacts/Amazon/candidate_corpus.jsonl",
+      "queries": "artifacts/Amazon/queries.jsonl",
+      "queries_sha256": "b3b08c109cf675cb08633957e14e9bd52b22a88d4db90d9dff03d659d4efedb7",
+      "clean_corpus_sha256": "568f08f9cdb17d78773c2df60196d9d52a12b5e972eb415cadb1b733e4addd21",
+      "topopoison_corpus_sha256": "4fc4696464d6f8f2faf23c02f5993bbe68202bc2c3b46913b90e12412880e5bf",
+      "graphrag": {
+        "entity_types": ["item", "attribute", "event"],
+        "extract_prompt": "extract_item.prompt",
+        "map_prompt": "map_amazon.prompt",
+        "reduce_prompt": "reduce_amazon.prompt",
+        "response_type": "Top-10 ranked Amazon item list. Return exactly 10 lines, Rank 1 through Rank 10, one Item <id> per line."
+      },
+      "hipporag2": {
+        "retrieval_top_k": 30,
+        "qa_top_k": 10,
+        "passage_max_characters": 0
+      }
+    },
+    "Google": {
+      "target_id": "item-3264",
+      "entity_type": "item",
+      "entity_label": "Item",
+      "domain": "Google",
+      "sampling_seed": 0,
+      "changed_document_budget": 77,
+      "modified_document_count": 17,
+      "clean_corpus": "artifacts/Google/clean_corpus.jsonl",
+      "candidate_corpus": "artifacts/Google/candidate_corpus.jsonl",
+      "queries": "artifacts/Google/queries.jsonl",
+      "queries_sha256": "9606e591ce05e8514fa1a83b6f57a246fb42041408ca7f11660b8371d01037ea",
+      "clean_corpus_sha256": "93b44499155bcf711664dca7bd18b8903c4bf67fcb99e80c2ec5d25f9f16bb30",
+      "topopoison_corpus_sha256": "e3e9464e7f5a728e265028c3fe775885ae6c5841481dacf18457ce49630e9c11",
+      "graphrag": {
+        "entity_types": ["item", "attribute", "event"],
+        "extract_prompt": "extract_item.prompt",
+        "map_prompt": "map_google.prompt",
+        "reduce_prompt": "reduce_google.prompt",
+        "response_type": "Top-10 ranked Google Local item list. Return exactly 10 lines, Rank 1 through Rank 10, one Item <id> per line."
+      },
+      "hipporag2": {
+        "retrieval_top_k": 30,
+        "qa_top_k": 10,
+        "passage_max_characters": 0
+      }
+    },
+    "Yelp": {
+      "target_id": "business-3233",
+      "entity_type": "business",
+      "entity_label": "Business",
+      "domain": "Yelp",
+      "sampling_seed": 0,
+      "changed_document_budget": 77,
+      "modified_document_count": 17,
+      "clean_corpus": "artifacts/Yelp/clean_corpus.jsonl",
+      "candidate_corpus": "artifacts/Yelp/candidate_corpus.jsonl",
+      "queries": "artifacts/Yelp/queries.jsonl",
+      "queries_sha256": "c996fe9a8c62d356a33cc47baa48221562ddd7386ce14c8a74a7e03793fb7d67",
+      "clean_corpus_sha256": "3351b5aedd4047c23407f635ed4177b415accf6a9405c8a788650553aa5af997",
+      "topopoison_corpus_sha256": "391621ce942c36c41393ad47972806043ab7f855338423bfb7d4ed1e84969932",
+      "graphrag": {
+        "entity_types": ["organization", "business", "cuisine", "dish", "location", "geo", "ambience", "service", "attribute", "price", "experience", "event"],
+        "extract_prompt": "extract_business.prompt",
+        "map_prompt": "map_yelp.prompt",
+        "reduce_prompt": "reduce_yelp.prompt",
+        "response_type": "Top-10 ranked Yelp business list. Return exactly 10 lines, Rank 1 through Rank 10, one Business <id> per line."
+      },
+      "hipporag2": {
+        "retrieval_top_k": 50,
+        "qa_top_k": 20,
+        "passage_max_characters": 500
+      }
+    }
+  },
+  "graphrag": {
+    "version": "2.7.2",
+    "community_level": 0,
+    "query_concurrency": 1,
+    "per_query_timeout_seconds": 300,
+    "request_timeout_seconds": 360,
+    "max_cluster_size": 4
+  },
+  "vllm": {
+    "version": "0.8.5",
+    "transformers_version": "4.51.3",
+    "openai_version": "1.91.0"
+  },
+  "hipporag2": {
+    "version": "2.0.0a4",
+    "accelerate_version": "1.2.1",
+    "torch_version": "2.5.1",
+    "transformers_version": "4.45.2",
+    "openai_version": "1.91.0",
+    "embedding_model": "facebook/contriever",
+    "contriever_revision": "refs/pr/2",
+    "linking_top_k": 8,
+    "embedding_batch_size": 16,
+    "embedding_max_sequence_length": 512,
+    "max_generation_tokens": 512,
+    "rerank_prompt": "third_party/HippoRAG/src/hipporag/prompts/dspy_prompts/filter_llama3.3-70B-Instruct.json"
+  }
+}

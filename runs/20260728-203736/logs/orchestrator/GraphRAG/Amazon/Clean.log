@@ -1,0 +1,1 @@
+$ /home/liuyuli/code-w/safe/logicPoison-main/Experiment/code/.venvs/graphrag/bin/python -m topopoison.graphrag_runner --dataset Amazon --condition Clean --run-dir /home/liuyuli/code-w/safe/logicPoison-main/Experiment/code/runs/20260728-203736 --base-url http://10.0.8.5:8003/v1 --model microsoft/phi-4 --config /home/liuyuli/code-w/safe/logicPoison-main/Experiment/code/config.json
